@@ -1,5 +1,11 @@
 from fastapi import FastAPI
+from api.routes import router
 
+
+app.include_router(
+    router,
+    prefix="/api"
+)
 app = FastAPI(
     title="V2MarzNet API",
     description="Professional VPN Management Platform",
