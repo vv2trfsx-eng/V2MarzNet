@@ -1,17 +1,21 @@
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import Dashboard from "./pages/Dashboard";
+
+
 function App(){
 
 return (
 
 <div>
 
-<h1>
-🚀 V2MarzNet Dashboard
-</h1>
+
+<Sidebar />
+
+<Header />
 
 
-<p>
-Professional VPN Management Platform
-</p>
+<Dashboard />
 
 
 </div>
