@@ -1,0 +1,80 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: v2marznet-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: v2marznet
+      POSTGRES_PASSWORD: v2marznet
+      POSTGRES_DB: v2marznet
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - v2marznet
+
+
+  redis:
+    image: redis:7
+    container_name: v2marznet-redis
+    restart: always
+    networks:
+      - v2marznet
+
+
+  backend:
+    build:
+      context: ./backend
+    container_name: v2marznet-backend
+    restart: always
+    depends_on:
+      - postgres
+      - redis
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    networks:
+      - v2marznet
+
+
+  telegram-bot:
+    build:
+      context: ./telegram-bot
+    container_name: v2marznet-bot
+    restart: always
+    depends_on:
+      - backend
+    env_file:
+      - .env
+    networks:
+      - v2marznet
+
+
+  nginx:
+    image: nginx:latest
+    container_name: v2marznet-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - backend
+    networks:
+      - v2marznet
+
+
+
+volumes:
+
+  postgres_data:
+
+
+networks:
+
+  v2marznet:
+    driver: bridge
