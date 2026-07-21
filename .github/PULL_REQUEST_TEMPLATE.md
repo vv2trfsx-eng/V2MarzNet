@@ -1,25 +1,32 @@
 ## Summary
 
-Describe the changes.
+Describe the purpose of this Pull Request.
 
 ## Changes
 
-- 
-- 
+List the main changes:
+
+-
+-
 -
 
 ## Testing
 
-Describe tests performed.
+Describe tests performed:
+
+- [ ] Backend tests
+- [ ] Frontend build
+- [ ] Docker build
+- [ ] Manual testing
 
 ## Security
 
-- [ ] No secrets added
+- [ ] No secrets or credentials added
 - [ ] Security impact reviewed
 
 ## Documentation
 
-- [ ] Documentation updated if needed
+- [ ] Documentation updated if required
 
 ## Checklist
 
