@@ -18,3 +18,9 @@ def subscriptions():
     return {
         "subscriptions": []
     }
+@router.get("/servers")
+def servers():
+
+    return {
+        "servers":[]
+    }
